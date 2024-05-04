@@ -10,6 +10,7 @@ class AppUrl {
   static GetProduct = (id) => this.BaseURL + "/product/" + id;
   static Update = (id) => this.BaseURL + "/update/" + id;
   static Edit = (id) => this.BaseURL + "/edit/" + id;
+  static Login = this.BaseURL + "/login/";
 
   static search(searchkey) {
     return this.BaseURL + "/search/" + searchkey;

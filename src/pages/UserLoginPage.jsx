@@ -1,13 +1,14 @@
 import React, { Component, Fragment } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { HiEye, HiEyeOff } from "react-icons/hi"; // Import icons for password visibility toggle
-// import Login from "../../assets/images/login.png";
+import Login from "../assets/images/login.png";
+import { Link } from "react-router-dom";
 
 class UserLogin extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mobileNumber: "",
+      email: "",
       password: "",
       showPassword: false, // State to manage password visibility
       errors: {}, // Object to store form validation errors
@@ -19,8 +20,10 @@ class UserLogin extends Component {
     e.preventDefault();
     // Validate form fields
     const errors = {};
-    if (!this.state.mobileNumber) {
-      errors.mobileNumber = "Mobile number is required";
+    if (!this.state.email) {
+      errors.email = "Email address is required";
+    } else if (!/\S+@\S+\.\S+/.test(this.state.email)) {
+      errors.email = "Invalid email address";
     }
     if (!this.state.password) {
       errors.password = "Password is required";
@@ -42,7 +45,7 @@ class UserLogin extends Component {
   };
 
   render() {
-    const { mobileNumber, password, showPassword, errors } = this.state;
+    const { email, password, showPassword, errors } = this.state;
     return (
       <Fragment>
         <Container>
@@ -65,19 +68,17 @@ class UserLogin extends Component {
                   <Form className="onboardForm" onSubmit={this.handleSubmit}>
                     <h4 className="section-title-login"> USER SIGN IN </h4>
                     <h6 className="section-sub-title">
-                      Please Enter Your Mobile Number
+                      Please Enter Your Email Address
                     </h6>
                     <input
                       className="form-control m-2"
-                      type="text"
-                      placeholder="Enter Mobile Number"
-                      value={mobileNumber}
-                      onChange={(e) =>
-                        this.setState({ mobileNumber: e.target.value })
-                      }
+                      type="email"
+                      placeholder="Enter Email Address"
+                      value={email}
+                      onChange={(e) => this.setState({ email: e.target.value })}
                     />
-                    {errors.mobileNumber && (
-                      <span className="text-danger">{errors.mobileNumber}</span>
+                    {errors.email && (
+                      <span className="text-danger">{errors.email}</span>
                     )}
 
                     <div className="input-group m-2">
@@ -102,18 +103,17 @@ class UserLogin extends Component {
                       <span className="text-danger">{errors.password}</span>
                     )}
 
-                    <Button
+                    <Link
+                      to="hero"
                       className="btn btn-block m-2 site-btn-login"
-                      type="submit"
                     >
-                      {" "}
-                      Next{" "}
-                    </Button>
+                      Next
+                    </Link>
                   </Form>
                 </Col>
 
                 <Col className="p-0 Desktop m-0" md={6} lg={6} sm={6} xs={6}>
-                  {/*<img className="onboardBanner" src={login} alt="Login" /> */}
+                  <img className="onboardBanner" src={Login} alt="Login" />
                 </Col>
               </Row>
             </Col>

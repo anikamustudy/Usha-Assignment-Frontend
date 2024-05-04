@@ -8,14 +8,21 @@ import ContactPage from "../pages/ContactPage";
 import NotificationPage from "../pages/NotificationPage";
 import FavouritePage from "../pages/FavouritePage";
 import AboutPage from "../pages/AboutPage";
+import MainNavbar from "../components/common/MainNavbar";
+import HomeSlider from "../components/home/HomeSlider";
+import FooterDesktop from "../components/common/FooterDesktop";
+import Hero from "../components/common/Hero";
+import ImageList from "../components/common/Product/ImageList";
 
 class AppRoute extends Component {
   render() {
     return (
       <Fragment>
         <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route exact path="/login" component={UserLoginPage} />
+          <Route exact path="/" component={MainNavbar} />
+          <Route exact path="/" component={HomeSlider} />
+          <Route exact path="/" component={FooterDesktop} />
+
           <Route exact path="/contact" component={ContactPage} />
           <Route exact path="/home" component={HomePage} />
           <Route exact path="/purchase" component={PurchasePage} />
@@ -25,6 +32,8 @@ class AppRoute extends Component {
           <Route exact path="/favourite" component={FavouritePage} />
           <Route exact path="/about" component={AboutPage} />
           <Route exact path="/login" component={UserLoginPage} />
+          <Route exact path="/hero" component={Hero} />
+          <Route exact path="/image-list" component={ImageList} />
         </Switch>
       </Fragment>
     );
