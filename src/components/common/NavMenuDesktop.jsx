@@ -115,11 +115,19 @@ class NavMenuDesktop extends Component {
                     className="btn"
                     style={{ display: "flex", alignItems: "center" }}
                   >
-                    <h5>Mobile</h5>
-                    <i className="fa h4 fa-mobile-alt"></i>
+                    <h5>Delete</h5>
+                    <i className="fa h4 fa-trash"></i>
                   </a>
-                  <Link to="/login" className="h4 btn">
-                    LOGIN
+                  <Link
+                    to="/image-list"
+                    className="btn"
+                    style={{ display: "flex", alignItems: "center" }}
+                  >
+                    <h5>View Products</h5>
+                    <i className="fa h4 fa-eye"></i>
+                  </Link>
+                  <Link to="/logout" className="h4 btn">
+                    Logout
                   </Link>
                 </Col>
               </Row>

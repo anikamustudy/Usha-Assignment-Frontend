@@ -4,12 +4,10 @@ import { BrowserRouter } from "react-router-dom"; // Correct import statement
 // import HomeTop from "./components/home/HomeTop";
 // import FooterDesktop from "./components/common/FooterDesktop";
 // import HomeSlider from "./components/home/HomeSlider";
-import MainNavbar from "./components/common/MainNavbar";
 // import UserLoginPage from "./pages/UserLoginPage";
 // import UserLogin from "./components/common/UserLogin";
 // import HomeTop from "./components/home/HomeTop";
-import HomeSlider from "./components/home/HomeSlider";
-import FooterDesktop from "./components/common/FooterDesktop";
+
 import AppRoute from "./route/AppRoute";
 // import UserLoginPage from "./components/common/UserLoginPage";
 
@@ -20,9 +18,6 @@ class App extends React.Component {
       <Fragment>
         <BrowserRouter>
           <AppRoute />
-          <MainNavbar />
-          <HomeSlider />
-          <FooterDesktop />
         </BrowserRouter>
       </Fragment>
     );

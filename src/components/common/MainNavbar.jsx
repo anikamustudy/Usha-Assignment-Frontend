@@ -3,6 +3,8 @@ import { Navbar, Container, Row, Col } from "react-bootstrap";
 import Logo from "../../assets/images/easyshop.png";
 // import Bars from "../../assets/images/bars.png";
 import { Link, Redirect } from "react-router-dom";
+import HomeSlider from "../home/HomeSlider";
+import FooterDesktop from "./FooterDesktop";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faHome } from "@fortawesome/free-solid-svg-icons";
 
@@ -138,6 +140,10 @@ class MainNavbar extends Component {
           onClick={this.ContentOverlayClickHandler}
           className={this.state.ContentOverState}
         ></div>
+        <div>
+          <HomeSlider />
+          <FooterDesktop />
+        </div>
       </Fragment>
     );
   }
