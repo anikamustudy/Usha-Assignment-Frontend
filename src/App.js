@@ -1,5 +1,7 @@
 import React, { Fragment } from "react";
+import "./input.css";
 import { BrowserRouter } from "react-router-dom"; // Correct import statement
+// import "./styles/tailwind.css"; // Import Tailwind CSS here
 // import AppRoute from "./route/AppRoute";
 // import HomeTop from "./components/home/HomeTop";
 // import FooterDesktop from "./components/common/FooterDesktop";

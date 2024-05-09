@@ -1,13 +1,13 @@
 import React, { Component, Fragment } from "react";
-import FeaturedProducts from "../components/home/FeaturedProduct";
-import HomeTop from "../components/home/HomeTop";
-import NavMenuDesktop from "../components/common/NavMenuDesktop";
+// import FeaturedProducts from "../components/home/FeaturedProduct";
 import NavMenuMobile from "../components/common/NavMenuMobile";
 import HomeTopMobile from "../components/home/HomeTopMobile";
 import FooterDesktop from "../components/common/FooterDesktop";
 import FooterMobile from "../components/common/FooterMobile";
 import AppUrl from "../api/AppUrl";
 import axios from "axios";
+import MainNavbar from "../components/common/MainNavbar";
+import HomeSlider from "../components/home/HomeSlider";
 
 export class HomePage extends Component {
   componentDidMount() {
@@ -22,8 +22,7 @@ export class HomePage extends Component {
     return (
       <Fragment>
         <div className="Desktop">
-          <NavMenuDesktop />
-          <HomeTop />
+          <MainNavbar />
         </div>
 
         <div className="Mobile">
@@ -31,7 +30,9 @@ export class HomePage extends Component {
           <HomeTopMobile />
         </div>
 
-        <FeaturedProducts />
+        <div>
+          <HomeSlider />
+        </div>
 
         <div className="Desktop">
           <FooterDesktop />

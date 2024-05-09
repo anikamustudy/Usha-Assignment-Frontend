@@ -1,150 +1,125 @@
-import React, { Component, Fragment } from "react";
+import React, { useState } from "react";
 import { Navbar, Container, Row, Col } from "react-bootstrap";
 import Logo from "../../assets/images/easyshop.png";
-// import Bars from "../../assets/images/bars.png";
 import { Link, Redirect } from "react-router-dom";
 
-class NavMenuDesktop extends Component {
-  constructor() {
-    super();
-    this.state = {
-      SideNavState: "sideNavClose",
-      ContentOverState: "ContentOverlayClose",
-      Searchkey: "",
-      SearchRedirectStauts: false,
-    };
-    this.SearchOnChange = this.SearchOnChange.bind(this);
-    this.SeachOnClick = this.SeachOnClick.bind(this);
-    this.searchRedirect = this.searchRedirect.bind(this);
-  }
+const NavMenuDesktop = () => {
+  const [sideNavState, setSideNavState] = useState("sideNavClose");
+  const [contentOverState, setContentOverState] = useState(
+    "ContentOverlayClose"
+  );
+  const [searchKey, setSearchKey] = useState("");
+  const [searchRedirectStatus, setSearchRedirectStatus] = useState(false);
 
-  SearchOnChange(event) {
-    let Searchkey = event.target.value;
-    // alert(Searchkey);
-    this.setState({ Searchkey: Searchkey });
-  }
-
-  SeachOnClick() {
-    if (this.state.Searchkey.length >= 2) {
-      this.setState({ SearchRedirectStauts: true });
-    }
-  }
-
-  searchRedirect() {
-    if (this.state.SearchRedirectStauts === true) {
-      return <Redirect to={"/search/" + this.state.Searchkey} />;
-    }
-  }
-
-  MenuBarClickHandler = () => {
-    this.SideNavOpenClose();
+  const searchOnChange = (event) => {
+    let searchKey = event.target.value;
+    setSearchKey(searchKey);
   };
 
-  ContentOverlayClickHandler = () => {
-    this.SideNavOpenClose();
+  const searchOnClick = () => {
+    if (searchKey.length >= 2) {
+      setSearchRedirectStatus(true);
+    }
   };
 
-  SideNavOpenClose = () => {
-    let SideNavState = this.state.SideNavState;
-    let ContentOverState = this.state.ContentOverState;
-    if (SideNavState === "sideNavOpen") {
-      this.setState({
-        SideNavState: "sideNavClose",
-        ContentOverState: "ContentOverlayClose",
-      });
+  const searchRedirect = () => {
+    if (searchRedirectStatus) {
+      return <Redirect to={"/search/" + searchKey} />;
+    }
+  };
+
+  const menuBarClickHandler = () => {
+    sideNavOpenClose();
+  };
+
+  const contentOverlayClickHandler = () => {
+    sideNavOpenClose();
+  };
+
+  const sideNavOpenClose = () => {
+    if (sideNavState === "sideNavOpen") {
+      setSideNavState("sideNavClose");
+      setContentOverState("ContentOverlayClose");
     } else {
-      this.setState({
-        SideNavState: "sideNavOpen",
-        ContentOverState: "ContentOverlayOpen",
-      });
+      setSideNavState("sideNavOpen");
+      setContentOverState("ContentOverlayOpen");
     }
   };
 
-  render() {
-    return (
-      <Fragment>
-        <div className="TopSectionDown">
-          <Navbar fixed={"top"} className="bg-blue">
-            {" "}
-            {/* Change bg to "lightblue" */}
-            <Container
-              fluid={"true"}
-              className="fixed-top shadow-sm p-2 mb-0 bg-white"
-            >
-              <Row>
-                <Col lg={4} md={4} sm={12} xs={12}>
-                  <Link to="/">
-                    {" "}
-                    <img className="nav-logo" src={Logo} />{" "}
-                  </Link>
-                </Col>
+  return (
+    <>
+      <div className="TopSectionDown">
+        <Navbar fixed={"top"} className="bg-blue">
+          <Container
+            fluid={true}
+            className="fixed-top shadow-sm p-2 mb-0 bg-white"
+          >
+            <Row>
+              <Col lg={4} md={4} sm={12} xs={12}>
+                <Link to="/">
+                  <img className="nav-logo" src={Logo} alt="Logo" />
+                </Link>
+              </Col>
 
-                <Col
-                  className="p-1 mt-1 diplay-flex"
+              <Col
+                className="p-1 mt-1 diplay-flex"
+                style={{ display: "flex", alignItems: "center" }}
+                lg={4}
+                md={4}
+                sm={12}
+                xs={12}
+              >
+                <Link
+                  to="/favourite"
+                  className="btn"
                   style={{ display: "flex", alignItems: "center" }}
-                  lg={4}
-                  md={4}
-                  sm={12}
-                  xs={12}
                 >
-                  <Link
-                    to="/favourite"
-                    className="btn"
-                    style={{ display: "flex", alignItems: "center" }}
-                  >
-                    <h5> Products</h5>
-                    <i className="fa h4 fa-shopping-cart"></i>
-                    <sup>
-                      <span className="badge text-white bg-danger">3</span>
-                    </sup>
-                  </Link>
+                  <h5>Add Products</h5>
+                  <i className="fa h4 fa-shopping-cart"></i>
+                </Link>
 
-                  <Link
-                    to="/notification"
-                    className="btn"
-                    style={{ display: "flex", alignItems: "center" }}
-                  >
-                    <h5 style={{ margin: 0, marginRight: "0.5rem" }}>Update</h5>
-                    <i className="fa h4 fa-edit "></i>
-                    <sup>
-                      <span className="badge text-white bg-danger">5</span>
-                    </sup>
-                  </Link>
+                <Link
+                  to="/updateproduct"
+                  className="btn"
+                  style={{ display: "flex", alignItems: "center" }}
+                >
+                  <h5 style={{ margin: 0, marginRight: "0.5rem" }}>Update</h5>
+                  <i className="fa h4 fa-edit "></i>
+                </Link>
 
-                  <a
-                    className="btn"
-                    style={{ display: "flex", alignItems: "center" }}
-                  >
-                    <h5>Delete</h5>
-                    <i className="fa h4 fa-trash"></i>
-                  </a>
-                  <Link
-                    to="/image-list"
-                    className="btn"
-                    style={{ display: "flex", alignItems: "center" }}
-                  >
-                    <h5>View Products</h5>
-                    <i className="fa h4 fa-eye"></i>
-                  </Link>
-                  <Link to="/logout" className="h4 btn">
-                    Logout
-                  </Link>
-                </Col>
-              </Row>
-              {this.searchRedirect()}
-            </Container>
-          </Navbar>
-        </div>
+                <a
+                  className="btn"
+                  style={{ display: "flex", alignItems: "center" }}
+                >
+                  <h5>Delete</h5>
+                  <i className="fa h4 fa-trash"></i>
+                </a>
+                <Link
+                  to="/image-list"
+                  className="btn"
+                  style={{ display: "flex", alignItems: "center" }}
+                >
+                  <h5>View Products</h5>
+                  <i className="fa h4 fa-eye"></i>
+                </Link>
+                <Link to="/" className="h4 btn">
+                  Logout
+                </Link>
+              </Col>
+            </Row>
+            {searchRedirect()}
+          </Container>
+        </Navbar>
+      </div>
 
-        <div className={this.state.SideNavState}></div>
+      <div className={sideNavState}></div>
 
-        <div
-          onClick={this.ContentOverlayClickHandler}
-          className={this.state.ContentOverState}
-        ></div>
-      </Fragment>
-    );
-  }
-}
+      <div
+        onClick={contentOverlayClickHandler}
+        className={contentOverState}
+      ></div>
+    </>
+  );
+};
 
 export default NavMenuDesktop;

@@ -3,7 +3,7 @@ import { Container, Form, Button } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
 
-class Notification extends Component {
+class AddProduct extends Component {
   state = {
     product: {
       name: "",
@@ -14,46 +14,6 @@ class Notification extends Component {
     selectedFile: null,
     imagePreviewUrl: "",
   };
-
-  componentDidMount() {
-    const id = this.props.match.params.id;
-    axios
-      .get(`http://127.0.0.1:8000/api/product/${id}`)
-      .then((response) => {
-        this.setState({ product: response.data });
-      })
-      .catch((error) => {
-        console.error("There was an error!", error);
-      });
-  }
-
-  handleInputChange = (event) => {
-    const { name, value } = event.target;
-    this.setState((prevState) => ({
-      product: {
-        ...prevState.product,
-        [name]: value,
-      },
-    }));
-  };
-
-  handleFileChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      // Create a URL for the file
-      const imagePreviewUrl = URL.createObjectURL(file);
-
-      this.setState({
-        selectedFile: file,
-        imagePreviewUrl, // Store the URL in state for rendering
-      });
-    }
-  };
-
-  componentWillUnmount() {
-    // Make sure to revoke the data uris to avoid memory leaks
-    URL.revokeObjectURL(this.state.imagePreviewUrl);
-  }
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -188,7 +148,7 @@ class Notification extends Component {
 
             <div className="d-flex justify-content-center mt-4">
               <Button variant="primary" type="submit">
-                Update Product
+                Add Product
               </Button>
             </div>
           </Form>
@@ -198,4 +158,4 @@ class Notification extends Component {
   }
 }
 
-export default withRouter(Notification);
+export default withRouter(AddProduct);

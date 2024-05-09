@@ -3,8 +3,10 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { HiEye, HiEyeOff } from "react-icons/hi"; // Import icons for password visibility toggle
 import Login from "../assets/images/login.png";
 import { Link } from "react-router-dom";
+import AppUrl from "../api/AppUrl";
+import AlertMessage from "../components/Favourite/AlertMessage";
 
-class UserLogin extends Component {
+class UserLoginPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,11 +14,12 @@ class UserLogin extends Component {
       password: "",
       showPassword: false, // State to manage password visibility
       errors: {}, // Object to store form validation errors
+      alert: null,
     };
   }
 
   // Function to handle form submission
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
     // Validate form fields
     const errors = {};
@@ -33,7 +36,48 @@ class UserLogin extends Component {
       this.setState({ errors });
       return;
     }
+
     // If no errors, submit form
+    try {
+      const response = await fetch(AppUrl.Login, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: this.state.email,
+          password: this.state.password,
+        }),
+      });
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data, "ress");
+        // Login successful, perform necessary actions (e.g., save token)
+        this.setState({
+          alert: <AlertMessage variant="success" message={data.message} />,
+        });
+        // console.log("Login successful");
+        // Redirect or perform any other actions after successful login
+      } else {
+        // Login failed, handle error
+        // console.error("Login failed");
+        this.setState({
+          alert: <AlertMessage variant="danger" message="Login failed" />,
+        });
+      }
+    } catch (error) {
+      console.error("Error occurred during login:", error);
+
+      this.setState({
+        alert: (
+          <AlertMessage
+            variant="danger"
+            message="Error occurred during login"
+          />
+        ),
+      });
+    }
+
     // You can add your form submission logic here
   };
 
@@ -45,7 +89,7 @@ class UserLogin extends Component {
   };
 
   render() {
-    const { email, password, showPassword, errors } = this.state;
+    const { email, password, showPassword, errors, alert } = this.state;
     return (
       <Fragment>
         <Container>
@@ -103,12 +147,20 @@ class UserLogin extends Component {
                       <span className="text-danger">{errors.password}</span>
                     )}
 
-                    <Link
+                    {/*}  <Link
                       to="hero"
                       className="btn btn-block m-2 site-btn-login"
                     >
-                      Next
-                    </Link>
+                      Login
+                  </Link>*/}
+
+                    <Button
+                      type="submit"
+                      className="btn btn-block m-2 site-btn-login"
+                    >
+                      Login
+                    </Button>
+                    {alert}
                   </Form>
                 </Col>
 
@@ -124,4 +176,4 @@ class UserLogin extends Component {
   }
 }
 
-export default UserLogin;
+export default UserLoginPage;
