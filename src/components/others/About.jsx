@@ -3,11 +3,11 @@ import { Container, Row, Col } from "react-bootstrap";
 
 const About = () => {
   return (
-    <div className="bg-primary text-white">
+    <div className="bg-slate-400 text-black">
       <Container className="py-5">
         <Row>
           <Col className="text-center">
-            <h2 className="text-4xl font-bold mb-4">About Us</h2>
+            <h2 className="text-4xl font-bold mb-4 ">About Us</h2>
             <p className="text-lg">
               Hi! I'm Meena Chand, a web developer with a serious love for
               teaching. I am the founder of eLe easy Learning and a passionate

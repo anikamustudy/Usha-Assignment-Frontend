@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from "react";
 import FooterDesktop from "../components/common/FooterDesktop";
 import FooterMobile from "../components/common/FooterMobile";
-import NavMenuDesktop from "../components/common/NavMenuDesktop";
-import NavMenuMobile from "../components/common/NavMenuMobile";
+// import NavMenuDesktop from "../components/common/NavMenuDesktop";
+// import NavMenuMobile from "../components/common/NavMenuMobile";
 import About from "../components/others/About";
+import MainNavbar from "../components/common/MainNavbar";
 
 class AboutPage extends Component {
   componentDidMount() {
@@ -14,11 +15,7 @@ class AboutPage extends Component {
     return (
       <Fragment>
         <div className="Desktop">
-          <NavMenuDesktop />
-        </div>
-
-        <div className="Mobile">
-          <NavMenuMobile />
+          <MainNavbar />
         </div>
 
         <About />

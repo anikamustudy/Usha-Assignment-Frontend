@@ -59,7 +59,7 @@ class NavMenuMobile extends Component {
                   </sup>
                 </Link>
 
-                <Link to="/notification" className="btn">
+                <Link to="/updateproduct" className="btn">
                   <i className="fa h4 fa-edit"></i>
                   <sup>
                     <span className="badge text-white bg-danger">5</span>
