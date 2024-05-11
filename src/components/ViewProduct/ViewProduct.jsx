@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 
-class Favourite extends Component {
+class ViewProduct extends Component {
   state = {
     products: [],
     isLoading: true,
@@ -98,7 +98,7 @@ class Favourite extends Component {
                 <img
                   alt={`Product ${product.name}`}
                   className="center w-75"
-                  src={`http://127.0.0.1:8000/storage/${product.file_path}`}
+                  src={`http://127.0.0.1:8000/storage/product_images/${product.image}`}
                 />
                 <Card.Body>
                   <h5 className="product-name-on-card">{product.name}</h5>
@@ -135,4 +135,4 @@ class Favourite extends Component {
   }
 }
 
-export default withRouter(Favourite);
+export default withRouter(ViewProduct);

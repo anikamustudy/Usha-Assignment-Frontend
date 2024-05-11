@@ -4,7 +4,7 @@ import { HiEye, HiEyeOff } from "react-icons/hi"; // Import icons for password v
 import Login from "../assets/images/login.png";
 import { Link } from "react-router-dom";
 import AppUrl from "../api/AppUrl";
-import AlertMessage from "../components/Favourite/AlertMessage";
+import AlertMessage from "../components/ViewProduct/AlertMessage";
 
 class UserLoginPage extends Component {
   constructor(props) {

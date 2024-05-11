@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 
-class Favourite extends Component {
+class UpdateDeleteProduct extends Component {
   state = {
     products: [],
     isLoading: true,
@@ -119,7 +119,9 @@ class Favourite extends Component {
                     <Button
                       className="btn btn-sm"
                       onClick={() =>
-                        this.props.history.push(`/updateproduct/${product.id}`)
+                        this.props.history.push(
+                          `/updatedeleteproduct/${product.id}`
+                        )
                       }
                     >
                       <i className="fa fa-edit"></i> Update
@@ -135,4 +137,4 @@ class Favourite extends Component {
   }
 }
 
-export default withRouter(Favourite);
+export default withRouter(UpdateDeleteProduct);

@@ -3,7 +3,7 @@ import FooterDesktop from "../components/common/FooterDesktop";
 import FooterMobile from "../components/common/FooterMobile";
 import NavMenuDesktop from "../components/common/NavMenuDesktop";
 import NavMenuMobile from "../components/common/NavMenuMobile";
-import UpdateProduct from "../components/Update/UpdateProduct";
+import UpdateProduct from "../components/UpdateDelete/UpdateDeleteProduct";
 
 class UpdateProductPage extends Component {
   componentDidMount() {

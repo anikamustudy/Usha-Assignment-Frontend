@@ -52,7 +52,7 @@ class NavMenuMobile extends Component {
                 </Link>
               </Col>
               <Col className="p-1 mt-1" lg={4} md={4} sm={12} xs={12}>
-                <Link to="/favourite" className="btn">
+                <Link to="/viewproduct" className="btn">
                   <i className="fa h4 fa-shopping-cart"></i>
                   <sup>
                     <span className="badge text-white bg-danger">3</span>
@@ -61,9 +61,6 @@ class NavMenuMobile extends Component {
 
                 <Link to="/updateproduct" className="btn">
                   <i className="fa h4 fa-edit"></i>
-                  <sup>
-                    <span className="badge text-white bg-danger">5</span>
-                  </sup>
                 </Link>
                 <a className="btn">
                   <i className="fa h4 fa-mobile-alt"></i>

@@ -57,13 +57,21 @@ const MainNavbar = () => {
             className="fixed-top shadow-sm p-2 mb-0 bg-white"
           >
             <Row className="flex-1">
-              <div>
-                <Col lg={4} md={4} sm={12} xs={12}>
-                  <Link to="/">
-                    <img className="nav-logo" src={Logo} alt="Logo" />
-                  </Link>
-                </Col>
-                <Col
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                <div>
+                  <Col lg={4} md={4} sm={12} xs={12}>
+                    <Link to="/">
+                      <img className="nav-logo" src={Logo} alt="Logo" />
+                    </Link>
+                  </Col>
+                </div>
+                <div
                   className="p-1 mt-1 diplay-flex"
                   style={{ display: "flex", alignItems: "left" }}
                   lg={4}
@@ -103,7 +111,7 @@ const MainNavbar = () => {
                   >
                     Login
                   </Link>
-                </Col>
+                </div>
               </div>
             </Row>
             {searchRedirect()}

@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from "react";
-import Favourite from "../components/Favourite/Favourite";
+import ViewProduct from "../components/ViewProduct/ViewProduct";
 import FooterDesktop from "../components/common/FooterDesktop";
 import FooterMobile from "../components/common/FooterMobile";
 import NavMenuDesktop from "../components/common/NavMenuDesktop";
 import NavMenuMobile from "../components/common/NavMenuMobile";
 
-class FavouritePage extends Component {
+class ViewProductPage extends Component {
   componentDidMount() {
     window.scroll(0, 0);
   }
@@ -21,7 +21,7 @@ class FavouritePage extends Component {
           <NavMenuMobile />
         </div>
 
-        <Favourite />
+        <ViewProduct />
 
         <div className="Desktop">
           <FooterDesktop />
@@ -35,4 +35,4 @@ class FavouritePage extends Component {
   }
 }
 
-export default FavouritePage;
+export default ViewProductPage;

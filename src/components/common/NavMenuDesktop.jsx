@@ -70,7 +70,7 @@ const NavMenuDesktop = () => {
                 xs={12}
               >
                 <Link
-                  to="/favourite"
+                  to="/addproduct"
                   className="btn"
                   style={{ display: "flex", alignItems: "center" }}
                 >
@@ -79,7 +79,7 @@ const NavMenuDesktop = () => {
                 </Link>
 
                 <Link
-                  to="/updateproduct"
+                  to="/updatedeleteproduct/:id"
                   className="btn"
                   style={{ display: "flex", alignItems: "center" }}
                 >
@@ -95,7 +95,7 @@ const NavMenuDesktop = () => {
                   <i className="fa h4 fa-trash"></i>
                 </a>
                 <Link
-                  to="/image-list"
+                  to="/viewproduct"
                   className="btn"
                   style={{ display: "flex", alignItems: "center" }}
                 >
