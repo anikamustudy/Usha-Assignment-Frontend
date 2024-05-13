@@ -4,12 +4,11 @@ import { withRouter } from "react-router-dom";
 import axios from "axios";
 import FooterDesktop from "../common/FooterDesktop";
 import NavMenuDesktop from "../common/NavMenuDesktop";
+import FooterMobile from "../common/FooterMobile";
+import NavMenuMobile from "../common/NavMenuMobile";
 
 const EditProduct = ({ history, match }) => {
   const productId = match.params.id;
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
-  const [description, setDescription] = useState("");
   const [product, setProduct] = useState({
     image: null,
     name: "",
@@ -26,8 +25,7 @@ const EditProduct = ({ history, match }) => {
         const response = await axios.get(
           `http://127.0.0.1:8000/api/product/${productId}`
         );
-        const { name, description, price, image } = response.data;
-        setProduct({ name, description, price, image });
+        setProduct(response.data);
       } catch (error) {
         console.error("Fetch error:", error);
       }
@@ -72,13 +70,13 @@ const EditProduct = ({ history, match }) => {
           },
         }
       );
-      setProduct({
-        name: response.data.name || "",
-        description: response.data.description || "",
-        price: response.data.price || "",
-        image: response.data.image || "",
+      setProduct(response.data); // Update product state with the response data
+
+      // Pass the updated product data to the view product page
+      history.push({
+        pathname: "/viewproduct",
+        state: { product: response.data },
       });
-      history.push("/editproduct");
     } catch (error) {
       console.error("Update error:", error);
     }
@@ -86,7 +84,14 @@ const EditProduct = ({ history, match }) => {
 
   return (
     <>
-      <NavMenuDesktop />
+      <div className="Desktop">
+        <NavMenuDesktop />
+      </div>
+
+      <div className="Mobile">
+        <NavMenuMobile />
+      </div>
+      <br />
       <Container>
         <div className="section-title text-center mb-55">
           <h2>UPDATE PRODUCT</h2>
@@ -143,7 +148,7 @@ const EditProduct = ({ history, match }) => {
           )}
 
           {imagePreviewUrl && (
-            <div className="text-center my-3">
+            <div className="text-center my-10">
               <img
                 src={imagePreviewUrl}
                 alt="Product"
@@ -159,7 +164,14 @@ const EditProduct = ({ history, match }) => {
           </div>
         </Form>
       </Container>
-      <FooterDesktop />
+
+      <div className="Desktop">
+        <FooterDesktop />
+      </div>
+
+      <div className="Mobile">
+        <FooterMobile />
+      </div>
     </>
   );
 };

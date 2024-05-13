@@ -4,7 +4,6 @@ import { withRouter } from "react-router-dom";
 import axios from "axios";
 import FooterDesktop from "../common/FooterDesktop";
 import NavMenuDesktop from "../common/NavMenuDesktop";
-import MainMenuMobile from "../common/MainMenuMobile";
 import NavMenuMobile from "../common/NavMenuMobile";
 import FooterMobile from "../common/FooterMobile";
 
