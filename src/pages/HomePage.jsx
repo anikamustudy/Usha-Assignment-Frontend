@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 // import FeaturedProducts from "../components/home/FeaturedProduct";
-import NavMenuMobile from "../components/common/NavMenuMobile";
+import MainMenuMobile from "../components/common/MainMenuMobile";
 import HomeTopMobile from "../components/home/HomeTopMobile";
 import FooterDesktop from "../components/common/FooterDesktop";
 import FooterMobile from "../components/common/FooterMobile";
@@ -26,8 +26,7 @@ export class HomePage extends Component {
         </div>
 
         <div className="Mobile">
-          <NavMenuMobile />
-          <HomeTopMobile />
+          <MainMenuMobile />
         </div>
 
         <div>

@@ -16,6 +16,7 @@ import ProductApp from "../components/common/Product/ProductApp";
 import ViewProduct from "../components/ViewProduct/ViewProduct";
 import UpdateDeleteProduct from "../components/UpdateDelete/UpdateDeleteProduct";
 import AddProduct from "../components/AddProduct/AddProduct";
+import EditProduct from "../components/UpdateDelete/EditPage";
 
 class AppRoute extends Component {
   render() {
@@ -32,14 +33,15 @@ class AppRoute extends Component {
           <Route exact path="/purchase" component={PurchasePage} />
           <Route exact path="/privacy" component={PrivacyPage} />
           <Route path="/updateproduct/:id" component={UpdateProductPage} />
-          <Route exact path="/viewproduct" component={ViewProdcutPage} />
+          <Route exact path="/viewproductpage" component={ViewProdcutPage} />
           <Route exact path="/about" component={AboutPage} />
           <Route path="/login" component={UserLoginPage} />
           <Route exact path="/hero" component={Hero} />
           <Route exact path="/product-app" component={ProductApp} />
           <Route exact path="/viewproduct" component={ViewProduct} />
-         
+
           <Route exact path="/addproduct" component={AddProduct} />
+          <Route exact path="/editproduct/:id" component={EditProduct} />
           <Route
             exact
             path="/updatedeleteproduct/:id"

@@ -87,13 +87,6 @@ const NavMenuDesktop = () => {
                   <i className="fa h4 fa-edit "></i>
                 </Link>
 
-                <a
-                  className="btn"
-                  style={{ display: "flex", alignItems: "center" }}
-                >
-                  <h5>Delete</h5>
-                  <i className="fa h4 fa-trash"></i>
-                </a>
                 <Link
                   to="/viewproduct"
                   className="btn"

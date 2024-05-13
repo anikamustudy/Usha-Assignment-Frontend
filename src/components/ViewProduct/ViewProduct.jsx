@@ -1,7 +1,94 @@
-import React, { Component } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
-import { withRouter } from "react-router-dom";
 
+const ViewProduct = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetchAllProducts();
+  }, []);
+
+  const fetchAllProducts = async () => {
+    await axios.get("http://127.0.0.1:8000/api/list").then(({ data }) => {
+      setProducts(data);
+    });
+  };
+
+  return (
+    <>
+      <Container className="text-center" fluid>
+        <div className="section-title text-center mb-55 m-10">
+          <h2>MY PRODUCT LIST ITEMS</h2>
+          <p>Some Of Our Exclusive Collection, You May Like</p>
+        </div>
+        <div className="d-flex justify-content-center">
+          <div className="input-group mb-3 search-width">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Search products..."
+              aria-label="Search products..."
+              aria-describedby="button-addon2"
+            />
+            <div className="input-group-append">
+              <Button
+                className="btn btn-outline-secondary"
+                type="button"
+                id="button-addon2"
+              >
+                <i className="fa fa-search"></i>
+              </Button>
+            </div>
+          </div>
+        </div>
+        <Row>
+          {products.map((product) => (
+            <Col key={product.id} xl={3} lg={3} md={3} sm={6} xs={6}>
+              <Card className="image-box card w-100">
+                <img
+                  alt={product.name}
+                  className="center w-75"
+                  src={`http://localhost:8000/product/images/${product.image}`}
+                />
+                <Card.Body>
+                  <h5 className="product-name-on-card">{product.name}</h5>
+                  <p className="product-id-on-card">ID: {product.id}</p>
+                  <p className="product-description-on-card">
+                    {product.description}
+                  </p>
+                  <p className="product-price-on-card">
+                    Price: ${product.price}
+                  </p>
+                  <div className="d-flex justify-content-center">
+                    <Button
+                      className="btn btn-sm me-2"
+                      onClick={() => this.delete(product.id)}
+                    >
+                      <i className="fa fa-trash-alt"></i> Remove
+                    </Button>
+                    <Button
+                      className="btn btn-sm"
+                      onClick={() =>
+                        this.props.history.push(`/updateproduct/${product.id}`)
+                      }
+                    >
+                      <i className="fa fa-edit"></i> Update
+                    </Button>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </Container>
+    </>
+  );
+};
+
+export default ViewProduct;
+
+/*
 class ViewProduct extends Component {
   state = {
     products: [],
@@ -43,7 +130,7 @@ class ViewProduct extends Component {
   };
 
   updateProduct = (id, updatedProduct) => {
-    fetch(`http://127.0.0.1:8000/api/update/${id}?_method=PUT`, {
+    fetch(`http://127.0.0.1:8000/api/update/${id}?_method=PUT}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -63,76 +150,10 @@ class ViewProduct extends Component {
       return <div>Loading...</div>;
     }
     return (
-      <Container className="text-center" fluid>
-        <div className="section-title text-center mb-55 m-10">
-          <h2>MY PRODUCT LIST ITEMS</h2>
-          <p>Some Of Our Exclusive Collection, You May Like</p>
-        </div>
-        <div className="d-flex justify-content-center">
-          <div className="input-group mb-3 search-width">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Search products..."
-              aria-label="Search products..."
-              aria-describedby="button-addon2"
-              value={this.state.searchKey}
-              onChange={(e) => this.setState({ searchKey: e.target.value })}
-            />
-            <div className="input-group-append">
-              <Button
-                className="btn btn-outline-secondary"
-                type="button"
-                id="button-addon2"
-                onClick={() => this.fetchProducts(this.state.searchKey)}
-              >
-                <i className="fa fa-search"></i>
-              </Button>
-            </div>
-          </div>
-        </div>
-        <Row>
-          {products.map((product) => (
-            <Col key={product.id} xl={3} lg={3} md={3} sm={6} xs={6}>
-              <Card className="image-box card w-100">
-                <img
-                  alt={`Product ${product.name}`}
-                  className="center w-75"
-                  src={`http://127.0.0.1:8000/storage/product_images/${product.image}`}
-                />
-                <Card.Body>
-                  <h5 className="product-name-on-card">{product.name}</h5>
-                  <p className="product-id-on-card">ID: {product.id}</p>
-                  <p className="product-description-on-card">
-                    {product.description}
-                  </p>
-                  <p className="product-price-on-card">
-                    Price: ${product.price}
-                  </p>
-                  <div className="d-flex justify-content-center">
-                    <Button
-                      className="btn btn-sm me-2"
-                      onClick={() => this.delete(product.id)}
-                    >
-                      <i className="fa fa-trash-alt"></i> Remove
-                    </Button>
-                    <Button
-                      className="btn btn-sm"
-                      onClick={() =>
-                        this.props.history.push(`/updateproduct/${product.id}`)
-                      }
-                    >
-                      <i className="fa fa-edit"></i> Update
-                    </Button>
-                  </div>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
-        </Row>
-      </Container>
+      
     );
   }
 }
 
 export default withRouter(ViewProduct);
+*/

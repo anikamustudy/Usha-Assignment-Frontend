@@ -4,6 +4,7 @@ import Logo from "../../assets/images/easyshop.png";
 import { Link, Redirect } from "react-router-dom";
 import FooterDesktop from "./FooterDesktop";
 
+
 const MainNavbar = () => {
   const [sideNavState, setSideNavState] = useState("sideNavClose");
   const [contentOverState, setContentOverState] = useState(
@@ -12,10 +13,12 @@ const MainNavbar = () => {
   const [searchKey, setSearchKey] = useState("");
   const [searchRedirectStatus, setSearchRedirectStatus] = useState(false);
 
+
   const searchOnChange = (event) => {
     let searchKey = event.target.value;
     setSearchKey(searchKey);
   };
+
 
   const searchOnClick = () => {
     if (searchKey.length >= 2) {
@@ -23,19 +26,23 @@ const MainNavbar = () => {
     }
   };
 
+
   const searchRedirect = () => {
     if (searchRedirectStatus) {
       return <Redirect to={"/search/" + searchKey} />;
     }
   };
 
+
   const menuBarClickHandler = () => {
     sideNavOpenClose();
   };
 
+
   const contentOverlayClickHandler = () => {
     sideNavOpenClose();
   };
+
 
   const sideNavOpenClose = () => {
     let newSideNavState =
@@ -48,6 +55,7 @@ const MainNavbar = () => {
     );
   };
 
+
   return (
     <>
       <div className="TopSectionDown">
@@ -56,70 +64,64 @@ const MainNavbar = () => {
             fluid={true}
             className="fixed-top shadow-sm p-2 mb-0 bg-white"
           >
-            <Row className="flex-1">
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                }}
+            <Row>
+              <Col lg={4} md={4} sm={12} xs={12}>
+                <Link to="/">
+                  <img className="nav-logo" src={Logo} alt="Logo" />
+                </Link>
+              </Col>
+
+
+              <Col
+                className="p-1 mt-1 diplay-flex text-right"
+                style={{ display: "flex" }}
+                lg={4}
+                md={4}
+                sm={12}
+                xs={12}
               >
-                <div>
-                  <Col lg={4} md={4} sm={12} xs={12}>
-                    <Link to="/">
-                      <img className="nav-logo" src={Logo} alt="Logo" />
-                    </Link>
-                  </Col>
-                </div>
-                <div
-                  className="p-1 mt-1 diplay-flex"
+                <Link
+                  to="/home"
+                  className="btn"
                   style={{ display: "flex", alignItems: "left" }}
-                  lg={4}
-                  md={4}
-                  sm={12}
-                  xs={12}
                 >
-                  <Link
-                    to="/home"
-                    className="btn"
-                    style={{ display: "flex", alignItems: "left" }}
-                  >
-                    <h5 style={{ margin: 0, marginRight: "0.5rem" }}>Home</h5>
-                  </Link>
+                  <h5 style={{ margin: 0, marginRight: "0.5rem" }}>Home</h5>
+                </Link>
 
-                  <Link
-                    to="/about"
-                    className="btn"
-                    style={{ display: "flex", alignItems: "left" }}
-                  >
-                    <h5 style={{ margin: 0, marginRight: "0.5rem" }}>About</h5>
-                  </Link>
 
-                  <Link
-                    to="/contact"
-                    className="btn"
-                    style={{ display: "flex", alignItems: "left" }}
-                  >
-                    <h5 style={{ margin: 0, marginRight: "0.5rem" }}>
-                      Contact
-                    </h5>
-                  </Link>
-                  <Link
-                    type="submit"
-                    to="/login"
-                    className="btn btn-block m-2 site-btn-login "
-                  >
-                    Login
-                  </Link>
-                </div>
-              </div>
+                <Link
+                  to="/about"
+                  className="btn"
+                  style={{ display: "flex", alignItems: "left" }}
+                >
+                  <h5 style={{ margin: 0, marginRight: "0.5rem" }}>About</h5>
+                </Link>
+
+
+                <Link
+                  to="/contact"
+                  className="btn"
+                  style={{ display: "flex", alignItems: "left" }}
+                >
+                  <h5 style={{ margin: 0, marginRight: "0.5rem" }}>Contact</h5>
+                </Link>
+                <Link
+                  type="submit"
+                  to="/login"
+                  className="btn btn-block m-2 site-btn-login w-9 "
+                >
+                  Login
+                </Link>
+              </Col>
             </Row>
             {searchRedirect()}
           </Container>
         </Navbar>
       </div>
 
+
       <div className={sideNavState}></div>
+
 
       <div
         onClick={contentOverlayClickHandler}
@@ -128,5 +130,6 @@ const MainNavbar = () => {
     </>
   );
 };
+
 
 export default MainNavbar;

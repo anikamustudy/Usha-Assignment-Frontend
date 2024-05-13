@@ -55,6 +55,7 @@ class UpdateDeleteProduct extends Component {
   };
 
   render() {
+    console.log("deleteee");
     const { products, isLoading, error } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
@@ -98,7 +99,7 @@ class UpdateDeleteProduct extends Component {
                 <img
                   alt={`Product ${product.name}`}
                   className="center w-75"
-                  src={`http://127.0.0.1:8000/storage/${product.file_path}`}
+                  src={`http://127.0.0.1:8000/storage/${product.image}`}
                 />
                 <Card.Body>
                   <h5 className="product-name-on-card">{product.name}</h5>
@@ -119,9 +120,7 @@ class UpdateDeleteProduct extends Component {
                     <Button
                       className="btn btn-sm"
                       onClick={() =>
-                        this.props.history.push(
-                          `/updatedeleteproduct/${product.id}`
-                        )
+                        this.props.history.push(`/editproduct/${product.id}`)
                       }
                     >
                       <i className="fa fa-edit"></i> Update
