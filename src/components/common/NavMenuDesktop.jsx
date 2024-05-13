@@ -79,7 +79,7 @@ const NavMenuDesktop = () => {
                 </Link>
 
                 <Link
-                  to="/updatedeleteproduct/:id"
+                  to="/updatedeleteproduct/id"
                   className="btn"
                   style={{ display: "flex", alignItems: "center" }}
                 >

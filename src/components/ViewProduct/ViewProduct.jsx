@@ -1,6 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import NavMenuDesktop from "../common/NavMenuDesktop";
+import NavMenuMobile from "../common/NavMenuMobile";
+import FooterMobile from "../common/FooterMobile";
+import FooterDesktop from "../common/FooterDesktop";
 
 const ViewProduct = () => {
   const [products, setProducts] = useState([]);
@@ -17,6 +21,14 @@ const ViewProduct = () => {
 
   return (
     <>
+      <div className="Desktop">
+        <NavMenuDesktop />
+      </div>
+
+      <div className="Mobile">
+        <NavMenuMobile />
+      </div>
+      <br />
       <Container className="text-center" fluid>
         <div className="section-title text-center mb-55 m-10">
           <h2>MY PRODUCT LIST ITEMS</h2>
@@ -60,28 +72,20 @@ const ViewProduct = () => {
                   <p className="product-price-on-card">
                     Price: ${product.price}
                   </p>
-                  <div className="d-flex justify-content-center">
-                    <Button
-                      className="btn btn-sm me-2"
-                      onClick={() => this.delete(product.id)}
-                    >
-                      <i className="fa fa-trash-alt"></i> Remove
-                    </Button>
-                    <Button
-                      className="btn btn-sm"
-                      onClick={() =>
-                        this.props.history.push(`/updateproduct/${product.id}`)
-                      }
-                    >
-                      <i className="fa fa-edit"></i> Update
-                    </Button>
-                  </div>
                 </Card.Body>
               </Card>
             </Col>
           ))}
         </Row>
       </Container>
+
+      <div className="Desktop">
+        <FooterDesktop />
+      </div>
+
+      <div className="Mobile">
+        <FooterMobile />
+      </div>
     </>
   );
 };

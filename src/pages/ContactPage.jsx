@@ -3,6 +3,7 @@ import Contact from "../components/common/Contact";
 import FooterDesktop from "../components/common/FooterDesktop";
 import FooterMobile from "../components/common/FooterMobile";
 import MainNavbar from "../components/common/MainNavbar";
+import MainMenuMobile from "../components/common/MainMenuMobile";
 // import NavMenuDesktop from "../components/common/NavMenuDesktop";
 // import NavMenuMobile from "../components/common/NavMenuMobile";
 
@@ -15,6 +16,10 @@ class ContactPage extends Component {
       <Fragment>
         <div className="Desktop">
           <MainNavbar />
+        </div>
+
+        <div className="Mobile">
+          <MainMenuMobile />
         </div>
 
         <Contact />

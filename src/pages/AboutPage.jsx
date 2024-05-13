@@ -5,8 +5,7 @@ import FooterMobile from "../components/common/FooterMobile";
 // import NavMenuMobile from "../components/common/NavMenuMobile";
 import About from "../components/others/About";
 import MainNavbar from "../components/common/MainNavbar";
-import NavMenuMobile from "../components/common/NavMenuMobile";
-import HomeTopMobile from "../components/home/HomeTopMobile";
+import MainMenuMobile from "../components/common/MainMenuMobile";
 
 class AboutPage extends Component {
   componentDidMount() {
@@ -21,7 +20,7 @@ class AboutPage extends Component {
         </div>
 
         <div className="Mobile">
-          <NavMenuMobile />
+          <MainMenuMobile />
         </div>
 
         <div>

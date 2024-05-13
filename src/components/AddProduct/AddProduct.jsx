@@ -4,6 +4,9 @@ import { withRouter } from "react-router-dom";
 import axios from "axios";
 import FooterDesktop from "../common/FooterDesktop";
 import NavMenuDesktop from "../common/NavMenuDesktop";
+import MainMenuMobile from "../common/MainMenuMobile";
+import NavMenuMobile from "../common/NavMenuMobile";
+import FooterMobile from "../common/FooterMobile";
 
 const AddProduct = ({ history }) => {
   const [name, setName] = useState();
@@ -54,7 +57,13 @@ const AddProduct = ({ history }) => {
 
   return (
     <>
-      <NavMenuDesktop />
+      <div className="Desktop">
+        <NavMenuDesktop />
+      </div>
+
+      <div className="Mobile">
+        <NavMenuMobile />
+      </div>
       <Container>
         <div className="section-title text-center mb-55">
           <h2>ADD PRODUCT</h2>
@@ -120,7 +129,13 @@ const AddProduct = ({ history }) => {
           </div>
         </Form>
       </Container>
-      <FooterDesktop />
+      <div className="Desktop">
+        <FooterDesktop />
+      </div>
+
+      <div className="Mobile">
+        <FooterMobile />
+      </div>
     </>
   );
 };

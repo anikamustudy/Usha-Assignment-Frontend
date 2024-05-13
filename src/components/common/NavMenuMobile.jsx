@@ -52,21 +52,19 @@ class NavMenuMobile extends Component {
                 </Link>
               </Col>
               <Col className="p-1 mt-1" lg={4} md={4} sm={12} xs={12}>
-                <Link to="/viewproduct" className="btn">
-                  <i className="fa h4 fa-shopping-cart"></i>
-                  <sup>
-                    <span className="badge text-white bg-danger">3</span>
-                  </sup>
+                <Link to="/addproduct" className="btn">
+                  <i class="fa h4 solid fa-cart-plus"></i>
                 </Link>
-
-                <Link to="/updateproduct" className="btn">
+                <Link to="/updatedeleteproduct/id" className="btn">
                   <i className="fa h4 fa-edit"></i>
                 </Link>
-                <a className="btn">
-                  <i className="fa h4 fa-mobile-alt"></i>
-                </a>
-                <Link to="/login" className="h4 btn">
-                  LOGIN
+
+                <Link to="/viewproduct" className="btn">
+                  <i class="fa h4 solid fa-eye"></i>
+                </Link>
+
+                <Link to="/logout" className="h4 btn">
+                  Logout
                 </Link>
               </Col>
             </Row>
